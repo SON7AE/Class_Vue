@@ -15,7 +15,7 @@
                 <div id="map"></div>
             </div>
             <div class="page__body__daily">
-                <DAILYWEATHER v-for="item in dailyData" :key="item" :data="item" />
+                <DAILYWEATHER v-for="item in hourlyData" :key="item" :data="item" />
             </div>
         </body>
     </div>
@@ -52,7 +52,7 @@ export default {
             const res = [
                 {
                     label: "Precipitation",
-                    value: "30%",
+                    value: "38%",
                 },
                 {
                     label: "Humidity",
@@ -65,7 +65,7 @@ export default {
             ]
             return res
         },
-        dailyData() {
+        hourlyData() {
             // 일일 데이터
             const res = store.state.openWeatherApi.hourly
             res.forEach((item) => {
@@ -145,12 +145,21 @@ export default {
             align-items: center;
             justify-content: flex-start;
 
-            width: 52.5%;
+            width: 65%;
 
             margin-top: 48px;
             gap: 48px;
 
             overflow-x: scroll;
+
+            // /* Hide scrollbar for IE, Edge and Firefox */
+            -ms-overflow-style: none; /* IE and Edge */
+            scrollbar-width: none; /* Firefox */
+
+            // /* Hide scrollbar for Chrome, Safari and Opera */
+            &::-webkit-scrollbar {
+                display: none;
+            }
         }
     }
 }

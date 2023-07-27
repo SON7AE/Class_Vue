@@ -9,7 +9,7 @@
                 <span class="low" style="font-size: 20px; margin-top: 8px">m/s</span>
             </div>
             <div class="daily-weather__data__icon">
-                <img src="@assets/images/test.svg" alt="" />
+                <img :src="`src/assets/images/${data.weather[0].icon}.png`" alt="" />
             </div>
         </div>
     </div>
@@ -62,8 +62,7 @@ export default {
             justify-content: center;
 
             img {
-                width: 90px;
-                height: 90px;
+                height: 80px;
             }
         }
     }
