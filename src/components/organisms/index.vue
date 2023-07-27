@@ -37,14 +37,14 @@ import store from "@store/index"
 
 export default {
     components: { WEATHERBOX, GRAPH, DailyWeather },
-    data() {
-        return {
-            cityName: "",
-        }
-    },
     created() {
         store.dispatch("openWeatherApi/fetchApi")
-        this.cityName = store.state.openWeatherApi.cityName
+    },
+    computed: {
+        cityName() {
+            // 해당 도시 이름
+            return store.state.openWeatherApi.cityName
+        },
     },
 }
 </script>
