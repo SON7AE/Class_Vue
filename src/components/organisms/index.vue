@@ -1,7 +1,7 @@
 <template>
     <div class="page">
         <header class="page__header">
-            <span class="page__header__region">Belgrade, Serbia</span>
+            <span class="page__header__region">{{ cityName }}, Korea</span>
             <span class="page__header__date"> Wed, 5 Sep 2020 </span>
         </header>
         <body class="page__body">
@@ -18,6 +18,12 @@
             </div>
             <div class="page__body__daily">
                 <DailyWeather />
+                <DailyWeather />
+                <DailyWeather />
+                <DailyWeather />
+                <DailyWeather />
+                <DailyWeather />
+                <DailyWeather />
             </div>
         </body>
     </div>
@@ -27,9 +33,19 @@
 import WEATHERBOX from "@components/mocules/weatherBox.vue"
 import GRAPH from "@components/mocules/graph.vue"
 import DailyWeather from "@components/mocules/dailyWeather.vue"
+import store from "@store/index"
 
 export default {
     components: { WEATHERBOX, GRAPH, DailyWeather },
+    data() {
+        return {
+            cityName: "",
+        }
+    },
+    created() {
+        store.dispatch("openWeatherApi/fetchApi")
+        this.cityName = store.state.openWeatherApi.cityName
+    },
 }
 </script>
 
@@ -81,9 +97,19 @@ export default {
                     justify-content: center;
 
                     gap: 80px;
-                    margin-top: 48px;
+                    margin-top: 32px;
                 }
             }
+        }
+        &__daily {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            width: 100%;
+
+            margin-top: 48px;
+            gap: 48px;
         }
     }
 }

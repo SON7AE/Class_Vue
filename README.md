@@ -16,3 +16,5 @@ Vue.js Router 설정부터 Alias 설정, API 통신을 쉽고 빠르게 진행�
 -   SASS DEV 설치 : `npm install --save-dev sass`
 -   Vue Router 설치 : `yarn add vue-router@4`
 -   HTTP 통신을 위한 AXIOS 설치 : `npm install axios`
+-   중앙집중식 상태관리 라이브러리 VUEX 설치 : `yarn add vuex@next --save`
+-   Dayjs 라이브러리 설치 : `npm install dayjs`

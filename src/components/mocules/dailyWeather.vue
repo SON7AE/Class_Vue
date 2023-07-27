@@ -44,8 +44,10 @@ export default {}
             font-size: 32px;
             font-weight: 100;
 
-            .low {
-                color: $color-white-200;
+            color: $color-white-200;
+
+            .high {
+                color: $color-black-900;
             }
         }
 
@@ -55,8 +57,8 @@ export default {}
             justify-content: center;
 
             img {
-                width: 100px;
-                height: 100px;
+                width: 90px;
+                height: 90px;
             }
         }
     }
