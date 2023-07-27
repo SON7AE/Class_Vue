@@ -139,6 +139,12 @@ export default {
                     margin-top: 32px;
                 }
             }
+            // #map {
+            //     width: 400px;
+            //     height: 400px;
+
+            //     background-color: black;
+            // }
         }
         &__daily {
             display: flex;

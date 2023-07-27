@@ -15,7 +15,7 @@ export default {
             humidity: "", // 습도
             uvi: "", // 자외선 수치
         },
-        hourly: [],
+        hourly: [], // 시간대별 날씨 데이터
     },
     getters: {},
     mutations: {},
@@ -23,7 +23,7 @@ export default {
         // actions에서는 mutaions처럼 state를 바로 불러올 순 없다.
         // context라는 객체데이터를 가지고 와서, context를 참조하여 데이터를 불러온다.
         // context에는 state, getters, mutations를 활용할 수 있는 데이터를 담고있다.
-        // mutations를 불러오기 위해선(접근하기 위해선) context.mutaions가 아니라 context.commit을 활용한다.
+        // mutations를 불러오기 위해선(접근하기 위해선) context.mutations가 아니라 context.commit을 활용한다.
         // ----------------------------------------------------------------------------------------------------
         // 객체구조분해 방법으로 불러올 수 있다.
         // ex) functionName({context})
@@ -54,9 +54,6 @@ export default {
                 state.current.uvi = current.uvi
                 state.current.icon = current.weather[0].icon
                 state.hourly = hourly.splice(23, hourly.length - 1)
-
-                console.log(res.data)
-                // 시간대별 날씨 이미지 아이콘 변경
             } catch (error) {
                 console.log(error)
             }
