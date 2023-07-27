@@ -12,6 +12,7 @@ Vue.js 개발을 보다 효과적으로 진행하기 위해 그리고 훗날 Nux
 Vue.js Router 설정부터 Alias 설정, API 통신을 쉽고 빠르게 진행할 수 있는 플러그인 설치까지 <br />
 함께 진행해보도록 하겠습니다.
 
+-   Vite Vue.js CLI 설치 : `yarn create vite`
 -   SASS 설치 : `npm install -g sass`
 -   SASS DEV 설치 : `npm install --save-dev sass`
 -   Vue Router 설치 : `yarn add vue-router@4`

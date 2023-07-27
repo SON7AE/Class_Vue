@@ -2,22 +2,30 @@
     <div class="weather-box">
         <div class="weather-box__icon-box">
             <div class="weather-box__icon-box__info">
-                <span class="temp">23&deg;C</span>
-                <span class="desc">Partly Sunny</span>
+                <span class="temp">{{ data.temp + "&deg;C" }}</span>
+                <span class="desc">{{ data.desc }}</span>
                 <span class="update">Updated 1:48pm</span>
             </div>
-            <img src="@assets/images/test.svg" alt="" class="weather-box__icon-box__icon" />
+
+            <img :src="`src/assets/images/${data.icon}.png`" alt="" class="weather-box__icon-box__icon" />
         </div>
         <div class="weather-box__detail">
-            <span class="weather-box__detail__item">Barometer 1009.0mb</span>
-            <span class="weather-box__detail__item">Feels like 25&deg;C</span>
-            <span class="weather-box__detail__item">Humidity 41%</span>
+            <span class="weather-box__detail__item">Barometer {{ data.barometer }}mb</span>
+            <span class="weather-box__detail__item">Feels like {{ Math.floor(data.feelsLike) + "&deg;C" }}</span>
+            <span class="weather-box__detail__item">Humidity {{ data.humidity }}%</span>
         </div>
     </div>
 </template>
 
 <script>
-export default {}
+export default {
+    props: {
+        data: {
+            type: Object,
+            required: true,
+        },
+    },
+}
 </script>
 
 <style lang="scss" scoped>
@@ -57,7 +65,7 @@ export default {}
             }
         }
         &__icon {
-            height: 180px;
+            height: 160px;
         }
     }
     &__detail {

@@ -1,11 +1,12 @@
 <template>
     <div class="daily-weather">
         <div class="daily-weather__data">
-            <span class="daily-weather__data__date">Thu</span>
+            <span class="daily-weather__data__date">{{ data.dt }}</span>
             <div class="daily-weather__data__temp">
-                <span class="high">24&deg;</span>
+                <span class="high">{{ Math.floor(data.temp) + "&deg;" }}</span>
                 /
-                <span class="low">14&deg;</span>
+                <span class="low">{{ Math.floor(data.wind_speed) }}</span>
+                <span class="low" style="font-size: 20px; margin-top: 8px">m/s</span>
             </div>
             <div class="daily-weather__data__icon">
                 <img src="@assets/images/test.svg" alt="" />
@@ -15,7 +16,11 @@
 </template>
 
 <script>
-export default {}
+export default {
+    props: {
+        data: { type: Object, required: true },
+    },
+}
 </script>
 
 <style lang="scss" scoped>
@@ -33,7 +38,7 @@ export default {}
         justify-content: center;
 
         &__date {
-            font-size: 32px;
+            font-size: 24px;
             font-weight: 100;
         }
         &__temp {

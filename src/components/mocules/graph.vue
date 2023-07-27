@@ -2,14 +2,21 @@
     <div class="graph">
         <div class="graph__outer"></div>
         <div class="graph__inner"></div>
-        <div class="graph__middle"></div>
-        <span class="graph__value">50%</span>
-        <span class="graph__name">Precipitation</span>
+        <div class="graph__middle" :style="{ background: `conic-gradient(#3abbe0 0% ${data.value}, #ffffff ${data.value} 100%)` }"></div>
+        <span class="graph__value">{{ data.value }}</span>
+        <span class="graph__name">{{ data.label }}</span>
     </div>
 </template>
 
 <script>
-export default {}
+export default {
+    props: {
+        data: {
+            type: Object,
+            required: true,
+        },
+    },
+}
 </script>
 
 <style lang="scss" scoped>
@@ -55,7 +62,7 @@ export default {}
         width: 160px;
         height: 160px;
 
-        background: conic-gradient($color-blue-000 0% 50%, $color-white-000 50% 100%);
+        // background: conic-gradient($color-blue-000 0% 50%, $color-white-000 50% 100%);
         border-radius: 50%;
 
         // animation: chart 0.5s forwards;
@@ -64,7 +71,7 @@ export default {}
         position: absolute;
         z-index: 3;
 
-        font-size: 28px;
+        font-size: 24px;
     }
     &__name {
         position: absolute;

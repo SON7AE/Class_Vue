@@ -6,6 +6,16 @@ export default {
     // state: 실제로 취급하는 데이터
     state: {
         cityName: "",
+        current: {
+            temp: "", // 현재온도
+            desc: "", // 날씨묘사
+            icon: "", // 날씨아이콘
+            barometer: "", // 기압
+            feelsLike: "", // 체감온도
+            humidity: "", // 습도
+            uvi: "", // 자외선 수치
+        },
+        hourly: [],
     },
     getters: {},
     mutations: {},
@@ -31,10 +41,22 @@ export default {
             try {
                 const res = await axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${axisLat}&lon=${axisLon}&appid=${API_KEY}&units=metric`)
                 const data = res.data
-                // 데이터 설정
+                const current = res.data.current
+                const hourly = res.data.hourly
 
+                // 데이터 설정
                 state.cityName = data.timezone.split("/")[1]
-                // console.log(res.data)
+                state.current.temp = Math.floor(current.temp)
+                state.current.desc = current.weather[0].description
+                state.current.barometer = current.pressure
+                state.current.feelsLike = current.feels_like
+                state.current.humidity = current.humidity
+                state.current.uvi = current.uvi
+                state.current.icon = current.weather[0].icon
+                state.hourly = hourly.splice(23, hourly.length - 1)
+
+                console.log(res.data)
+                // 시간대별 날씨 이미지 아이콘 변경
             } catch (error) {
                 console.log(error)
             }
