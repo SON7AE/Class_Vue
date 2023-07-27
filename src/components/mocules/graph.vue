@@ -23,16 +23,16 @@ export default {}
     align-items: center;
     justify-content: center;
 
-    width: 200px;
-    height: 200px;
+    width: 180px;
+    height: 180px;
 
     border-radius: 50%;
 
     &__outer {
         position: absolute;
 
-        width: 180px;
-        height: 180px;
+        width: 160px;
+        height: 160px;
 
         background-color: $color-white-000;
         border-radius: 50%;
@@ -41,8 +41,8 @@ export default {}
         position: absolute;
         z-index: 2;
 
-        width: 140px;
-        height: 140px;
+        width: 124px;
+        height: 124px;
 
         background-color: $color-white-100;
         border-radius: 50%;
@@ -52,8 +52,8 @@ export default {}
     &__middle {
         position: absolute;
 
-        width: 180px;
-        height: 180px;
+        width: 160px;
+        height: 160px;
 
         background: conic-gradient($color-blue-000 0% 50%, $color-white-000 50% 100%);
         border-radius: 50%;
@@ -64,7 +64,7 @@ export default {}
         position: absolute;
         z-index: 3;
 
-        font-size: 32px;
+        font-size: 28px;
     }
     &__name {
         position: absolute;

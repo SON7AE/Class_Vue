@@ -16,7 +16,9 @@
                 </div>
                 <div id="map"></div>
             </div>
-            <div class="page__body__daily"></div>
+            <div class="page__body__daily">
+                <DailyWeather />
+            </div>
         </body>
     </div>
 </template>
@@ -24,9 +26,10 @@
 <script>
 import WEATHERBOX from "@components/mocules/weatherBox.vue"
 import GRAPH from "@components/mocules/graph.vue"
+import DailyWeather from "@components/mocules/dailyWeather.vue"
 
 export default {
-    components: { WEATHERBOX, GRAPH },
+    components: { WEATHERBOX, GRAPH, DailyWeather },
 }
 </script>
 
