@@ -32,11 +32,11 @@ export default {
         // ex) functionName({ state, getters, commit }, payload) {}
         // 함수가 실행될 때, 두 번째 매개변수 자리는 인수로 들어온 특정한 데이터를 payload라는 이름으로 받는다.
 
-        async fetchApi({ state }) {
+        async fetchApi({ state }, payload) {
             const API_KEY = "284bfdeb630520653864189833ba7c68"
             // 위도 경도 좌표 변수
-            let axisLat = 37.5683
-            let axisLon = 126.9778
+            let axisLat = payload.lat
+            let axisLon = payload.lon
 
             try {
                 const res = await axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${axisLat}&lon=${axisLon}&appid=${API_KEY}&units=metric`)
@@ -45,7 +45,8 @@ export default {
                 const hourly = res.data.hourly
 
                 // 데이터 설정
-                state.cityName = data.timezone.split("/")[1]
+                // state.cityName = data.timezone.split("/")[1] // 테스트 코드
+                state.cityName = payload.cityName
                 state.current.temp = Math.floor(current.temp)
                 state.current.desc = current.weather[0].description
                 state.current.barometer = current.pressure

@@ -31,8 +31,18 @@ import dayjs from "dayjs"
 
 export default {
     components: { WEATHERBOX, GRAPH, DAILYWEATHER, MAP },
+    data() {
+        return {
+            axis: {
+                // Default Seoul Axis
+                lat: 37.5683,
+                lon: 126.9778,
+                cityName: "Seoul",
+            },
+        }
+    },
     created() {
-        store.dispatch("openWeatherApi/fetchApi")
+        store.dispatch("openWeatherApi/fetchApi", this.axis)
     },
     computed: {
         cityName() {

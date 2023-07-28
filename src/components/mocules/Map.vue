@@ -5,6 +5,7 @@
 <script>
 import KAKAO_API_KEY from "@/config/apiKey.js"
 import mapAxis from "@assets/mapAxis.json"
+import store from "@store/index"
 
 export default {
     mounted() {
@@ -44,6 +45,12 @@ export default {
                     // 클릭한 위도, 경도 정보를 가져옵니다
                     // watch로 따로 빼지 않고, 직접 할당
                     const res = marker.getPosition()
+                    const axis = {
+                        lat: res.Ma,
+                        lon: res.La,
+                        cityName: pos.cityName,
+                    }
+                    store.dispatch("openWeatherApi/fetchApi", axis)
                     // store.FETCH_OPENWEATHER_API(res.Ma, res.La, pos.cityName)
                 })
                 // 아래 코드는 지도 위의 마커를 제거하는 코드입니다
