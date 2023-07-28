@@ -12,7 +12,7 @@
                         <GRAPH v-for="item in graphData" :key="item" :data="item" />
                     </div>
                 </div>
-                <div id="map"></div>
+                <MAP />
             </div>
             <div class="page__body__daily">
                 <DAILYWEATHER v-for="item in hourlyData" :key="item" :data="item" />
@@ -22,14 +22,15 @@
 </template>
 
 <script>
-import WEATHERBOX from "@components/mocules/weatherBox.vue"
-import GRAPH from "@components/mocules/graph.vue"
-import DAILYWEATHER from "@components/mocules/dailyWeather.vue"
+import WEATHERBOX from "@components/mocules/WeatherBox.vue"
+import GRAPH from "@components/mocules/Graph.vue"
+import DAILYWEATHER from "@components/mocules/DailyWeather.vue"
+import MAP from "@components/mocules/Map.vue"
 import store from "@store/index"
 import dayjs from "dayjs"
 
 export default {
-    components: { WEATHERBOX, GRAPH, DAILYWEATHER },
+    components: { WEATHERBOX, GRAPH, DAILYWEATHER, MAP },
     created() {
         store.dispatch("openWeatherApi/fetchApi")
     },
@@ -124,6 +125,8 @@ export default {
             align-items: center;
             justify-content: center;
 
+            gap: 100px;
+
             .data-box {
                 display: flex;
                 flex-direction: column;
@@ -139,19 +142,13 @@ export default {
                     margin-top: 32px;
                 }
             }
-            // #map {
-            //     width: 400px;
-            //     height: 400px;
-
-            //     background-color: black;
-            // }
         }
         &__daily {
             display: flex;
             align-items: center;
             justify-content: flex-start;
 
-            width: 65%;
+            width: 82.5%;
 
             margin-top: 48px;
             gap: 48px;
