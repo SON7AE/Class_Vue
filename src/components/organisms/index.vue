@@ -26,7 +26,7 @@ import WEATHERBOX from "@components/mocules/WeatherBox.vue"
 import GRAPH from "@components/mocules/Graph.vue"
 import DAILYWEATHER from "@components/mocules/DailyWeather.vue"
 import MAP from "@components/mocules/Map.vue"
-import store from "@store/index"
+import { useStore } from "@store/pinia"
 import dayjs from "dayjs"
 import { reactive, computed } from "vue"
 
@@ -36,11 +36,12 @@ const axis = reactive({
     lon: 126.9778,
     cityName: "Seoul",
 })
-store.dispatch("openWeatherApi/fetchApi", axis)
+const store = useStore()
+store.fetchApi(axis)
 
 const cityName = computed(() => {
     // 해당 도시 이름
-    return store.state.openWeatherApi.cityName
+    return store.cityName
 })
 const date = computed(() => {
     // 현재 날짜 및 시간
@@ -49,7 +50,7 @@ const date = computed(() => {
 })
 const currentData = computed(() => {
     // 현재 시간에 따른 날씨 데이터
-    return store.state.openWeatherApi.current
+    return store.current
 })
 const graphData = computed(() => {
     // 그래프 데이터
@@ -71,7 +72,7 @@ const graphData = computed(() => {
 })
 const hourlyData = computed(() => {
     // 일일 데이터
-    const res = store.state.openWeatherApi.hourly
+    const res = store.hourly
     res.forEach((item) => {
         item.dt = Unix_timeStamp(item.dt)
     })
