@@ -17,15 +17,13 @@
     </div>
 </template>
 
-<script>
-export default {
-    props: {
-        data: {
-            type: Object,
-            required: true,
-        },
+<script setup>
+const props = defineProps({
+    data: {
+        type: Object,
+        required: true,
     },
-}
+})
 </script>
 
 <style lang="scss" scoped>
